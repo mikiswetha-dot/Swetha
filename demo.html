@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Activity Program</title>
+<link rel="icon" href="IMG-20260413-WA0042.jpg">
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+text-align:center;
+background-color: lightsalmon;
+background-image: url("IMG-20260413-WA0044.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
+}
+
+
+nav{
+background:lightsalmon;
+padding:15px;
+background-image: url("IMG-20260413-WA0043.jpg");
+background-size:cover;
+background-position:center;
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+nav button{
+margin:5px;
+padding:10px 20px;
+border:none;
+background:maroon;
+color:white;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+nav button:hover{
+transform:scale(1.1);
+background:rgba(250, 109, 66, 0.925);
+}
+
+.page{
+display:none;
+padding:40px 20px;
+}
+
+.active{
+display:block;
+}
+
+.home-box{
+max-width:800px;
+margin:auto;
+background:maroon;
+color:white;
+padding:50px;
+border-radius:15px;
+box-shadow:0 0px 50px lightsalmon;
+}
+
+.start-btn{
+margin-top:20px;
+padding:12px 25px; 
+font-size:16px;
+background:lightsalmon;
+border:none;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.start-btn:hover{
+transform:scale(1.1);
+}
+
+
+.activity-list button{
+display:block;
+margin:15px auto;
+padding:12px 35px;
+background:maroon;
+color:white;
+border:none;
+border-radius:25px;
+cursor:pointer;
+font-size:16px;
+transition:0.3s;
+}
+
+.activity-list button:hover{
+transform:scale(1.05);
+}
+
+.activity-list button:disabled{
+background:gray;
+}
+
+.activity-box{
+background:maroon;
+color:white;
+max-width:700px;
+margin:auto;
+padding:35px;
+border-radius:15px;
+text-align:left;
+box-shadow:0 0px 20px lightsalmon;
+}
+
+.activity-box p{
+font-weight:bold;
+margin-top:15px;
+}
+
+label{
+display:block;
+margin:6px 0;
+cursor:pointer;
+}
+
+.complete{
+margin-top:20px;
+background:lightsalmon;
+padding:10px 25px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.submit-btn{
+margin-top:20px;
+padding:12px 30px;
+font-size:16px;
+background:maroon;
+color:white;
+border:none;
+border-radius:6px;
+display:none;
+}
+
+.message{
+margin-top:10px;
+font-weight:bold;
+}
+
+.correct{
+color:rgb(255, 255, 254);
+}
+
+.wrong{
+color:rgb(255, 255, 253);
+}
+
+.congrats-box{
+max-width:700px;
+margin:auto;
+background:maroon;
+color:white;
+padding:40px;
+border-radius:10px;
+}
+
+.home-return{
+margin-top:20px;
+padding:12px 25px;
+background:lightsalmon;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<button onclick="showPage('home')">Home</button>
+<button onclick="showPage('activities')">Activities</button>
+<button onclick="showPage('progress')">Progress</button>
+</nav>
+
+<!-- HOME -->
+
+<div id="home" class="page active">
+
+<div class="home-box">
+
+<h1>Student Activity Program</h1>
+
+<p>
+Practice the fundamentals of HTML, CSS and JavaScript.
+Complete each activity by selecting the correct answers.
+</p>
+
+<button class="start-btn" onclick="startProgram()">
+Start Activities
+</button>
+
+</div>
+
+</div>
+
+<!-- ACTIVITIES -->
+
+<div id="activities" class="page">
+
+<h2>Select an Activity</h2>
+
+<div class="activity-list">
+
+<button id="act1" onclick="openActivity(1)">HTML Basics</button>
+<button id="act2" onclick="openActivity(2)">CSS Styling</button>
+<button id="act3" onclick="openActivity(3)">JavaScript Basics</button>
+
+</div>
+
+</div>
+
+<!-- ACTIVITY 1 -->
+
+<div id="activity1" class="page">
+
+<div class="activity-box">
+
+<h3>HTML Basics</h3>
+
+<p>1. What does HTML stand for?</p>
+
+<label><input type="radio" name="q1" value="0"> Home Tool Markup Language</label>
+<label><input type="radio" name="q1" value="1"> Hyper Text Markup Language</label>
+<label><input type="radio" name="q1" value="0"> Hyperlink Machine Language</label>
+
+<p>2. Which tag is used for the largest heading?</p>
+
+<label><input type="radio" name="q2" value="0">&lt;h6&gt;</label>
+<label><input type="radio" name="q2" value="1">&lt;h1&gt;</label>
+<label><input type="radio" name="q2" value="0">&lt;p&gt;</label>
+
+<p>3. Which tag creates a paragraph?</p>
+
+<label><input type="radio" name="q3" value="1">&lt;p&gt;</label>
+<label><input type="radio" name="q3" value="0">&lt;div&gt;</label>
+<label><input type="radio" name="q3" value="0">&lt;span&gt;</label>
+
+<div id="msg1" class="message"></div>
+
+<button class="complete" onclick="checkAnswers(1,['q1','q2','q3'])">
+Mark Completion
+</button>
+
+</div>
+
+</div>
+
+<!-- ACTIVITY 2 -->
+
+<div id="activity2" class="page">
+
+<div class="activity-box">
+
+<h3>CSS Styling</h3>
+
+<p>1. What does CSS stand for?</p>
+
+<label><input type="radio" name="q4" value="1"> Cascading Style Sheets</label>
+<label><input type="radio" name="q4" value="0"> Computer Style Sheets</label>
+<label><input type="radio" name="q4" value="0"> Creative Style System</label>
+
+<p>2. Which property changes text color?</p>
+
+<label><input type="radio" name="q5" value="1"> color</label>
+<label><input type="radio" name="q5" value="0"> background</label>
+<label><input type="radio" name="q5" value="0"> margin</label>
+
+<p>3. Which property changes font size?</p>
+
+<label><input type="radio" name="q6" value="1"> font-size</label>
+<label><input type="radio" name="q6" value="0"> text-align</label>
+<label><input type="radio" name="q6" value="0"> padding</label>
+
+<div id="msg2" class="message"></div>
+
+<button class="complete" onclick="checkAnswers(2,['q4','q5','q6'])">
+Mark Completion
+</button>
+
+</div>
+
+</div>
+
+<!-- ACTIVITY 3 -->
+
+<div id="activity3" class="page">
+
+<div class="activity-box">
+
+<h3>JavaScript Basics</h3>
+
+<p>1. JavaScript is used for?</p>
+
+<label><input type="radio" name="q7" value="0"> Styling pages</label>
+<label><input type="radio" name="q7" value="1"> Interactive websites</label>
+<label><input type="radio" name="q7" value="0"> Database design</label>
+
+<p>2. Which keyword declares a variable?</p>
+
+<label><input type="radio" name="q8" value="1"> var</label>
+<label><input type="radio" name="q8" value="0"> int</label>
+<label><input type="radio" name="q8" value="0"> string</label>
+
+<p>3. Which symbol is a JavaScript comment?</p>
+
+<label><input type="radio" name="q9" value="1">//</label>
+<label><input type="radio" name="q9" value="0">##</label>
+<label><input type="radio" name="q9" value="0">**</label>
+
+<div id="msg3" class="message"></div>
+
+<button class="complete" onclick="checkAnswers(3,['q7','q8','q9'])">
+Mark Completion
+</button>
+
+</div>
+
+</div>
+
+<!-- PROGRESS -->
+
+<div id="progress" class="page">
+
+<h2>Program Progress</h2>
+
+<h3 id="progressText">
+0 out of 3 activities completed
+</h3>
+
+<button id="submitBtn" class="submit-btn" onclick="showPage('congrats')">
+Finish Program
+</button>
+
+</div>
+
+
+<div id="congrats" class="page">
+
+<div class="congrats-box">
+
+<h1>🎉 Congratulations! 🎉</h1>
+
+<p>
+You have successfully completed the Web Development Activity Program.
+Your knowledge of HTML, CSS and JavaScript has improved.👏
+</p>
+
+<p>
+Keep learning, keep practicing, and build amazing websites.
+Great developers start with small steps like this.
+</p>
+
+<button class="home-return" onclick="showPage('home')">
+Return to Home
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+let completed=0
+let total=3
+let finished=[false,false,false]
+
+function showPage(page){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
+document.getElementById(page).classList.add("active")
+}
+
+function startProgram(){
+
+resetProgram()
+showPage("activities")
+
+}
+
+function resetProgram(){
+
+completed=0
+finished=[false,false,false]
+
+document.getElementById("progressText").innerText="0 out of 3 activities completed"
+
+document.getElementById("submitBtn").style.display="none"
+
+document.getElementById("act1").disabled=false
+document.getElementById("act2").disabled=false
+document.getElementById("act3").disabled=false
+
+document.querySelectorAll("input[type=radio]").forEach(r=>r.checked=false)
+
+document.querySelectorAll(".message").forEach(m=>m.innerText="")
+
+}
+
+function openActivity(num){
+
+if(finished[num-1]){
+alert("This activity is already completed.")
+return
+}
+
+showPage("activity"+num)
+
+}
+
+function checkAnswers(num,questions){
+
+let correct=true
+
+for(let q of questions){
+
+let selected=document.querySelector('input[name="'+q+'"]:checked')
+
+if(!selected){
+alert("Please answer all questions.")
+return
+}
+
+if(selected.value!="1"){
+correct=false
+}
+
+}
+
+let msg=document.getElementById("msg"+num)
+
+if(!correct){
+
+msg.innerText="❌ Some answers are wrong. Please try again."
+msg.className="message wrong"
+return
+
+}
+
+msg.innerText="✅ All answers correct!"
+msg.className="message correct"
+
+finished[num-1]=true
+
+document.getElementById("act"+num).disabled=true
+
+completed++
+
+document.getElementById("progressText").innerText=
+completed+" out of "+total+" activities completed"
+
+showPage("progress")
+
+setTimeout(()=>{
+
+if(completed===total){
+document.getElementById("submitBtn").style.display="inline-block"
+}else{
+showPage("activities")
+}
+
+},2000)
+
+}
+
+</script>
+
+</body>
+</html>
